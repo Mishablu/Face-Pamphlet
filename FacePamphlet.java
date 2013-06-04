@@ -67,12 +67,15 @@ public class FacePamphlet extends ConsoleProgram
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Add") && nameField.getText() != "") {
-			println("Add: " + nameField.getText());
+    	//PROBLEM: how to check that the textbox is not empty?
+		if (e.getActionCommand().equals("Add")) {
+			if (nameField.getText() != null) {
+				println("Add: " + nameField.getText());
+			}
 		} else if (e.getActionCommand().equals("Delete")) {
-			
+			println("Delete: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Lookup")) {
-			
+			println("Lookup: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Change Status") || e.getSource() == statusField) {
 			
 		} else if (e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField) {
