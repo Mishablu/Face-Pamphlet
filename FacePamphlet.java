@@ -19,6 +19,8 @@ public class FacePamphlet extends ConsoleProgram
 	private JTextField pictureField;
 	private JTextField friendField;
 	
+	private FacePamphletDatabase database;
+	
 	/**
 	 * This method has the responsibility for initializing the 
 	 * interactors in the application, and taking care of any other 
@@ -67,7 +69,6 @@ public class FacePamphlet extends ConsoleProgram
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-    	//PROBLEM: how to check that the textbox is not empty?
 		if (e.getActionCommand().equals("Add")) {
 			println("Add: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Delete")) {
