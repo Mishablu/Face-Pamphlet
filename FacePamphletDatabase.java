@@ -10,13 +10,15 @@ import java.util.*;
 
 public class FacePamphletDatabase implements FacePamphletConstants {
 
+	private Map<String, FacePamphletProfile> profileMap;
+	
 	/** 
 	 * Constructor
 	 * This method takes care of any initialization needed for 
 	 * the database.
 	 */
 	public FacePamphletDatabase() {
-		// You fill this in
+		profileMap = new HashMap<String, FacePamphletProfile>();
 	}
 	
 	
@@ -27,7 +29,11 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	 * the new profile passed in.
 	 */
 	public void addProfile(FacePamphletProfile profile) {
-		// You fill this in
+		String name = profile.getName();
+		if (profileMap.containsKey(name)) {
+			profileMap.remove(name);
+		}
+		profileMap.put(name, profile);
 	}
 
 	
