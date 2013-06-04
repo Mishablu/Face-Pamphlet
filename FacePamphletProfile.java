@@ -100,8 +100,8 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * associated with the profile.
 	 */ 
 	public Iterator<String> getFriends() {
-		// You fill this in.  Currently always returns null.
-		return null;
+		Iterator<String> iterator = friendList.iterator();
+		return iterator;
 	}
 	
 	/** 
