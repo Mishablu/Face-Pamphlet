@@ -14,7 +14,8 @@ import java.util.*;
 public class FacePamphletProfile implements FacePamphletConstants {
 	
 	private String profileName;
-	private String profileStatus;
+	private String profileStatus = "";
+	private ArrayList<String> friendList;
 	
 	
 	/** 
@@ -69,8 +70,12 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * a second time.)
 	 */
 	public boolean addFriend(String friend) {
-		// You fill this in.  Currently always returns true.
-		return true;
+		if (friendList.contains(friend)) {
+			return false;
+		} else {
+			friendList.add(friend);
+			return true;
+		}
 	}
 
 	/** 
@@ -82,8 +87,12 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * the given friend name could not be removed.)
 	 */
 	public boolean removeFriend(String friend) {
-		// You fill this in.  Currently always returns false.
-		return false;
+		if (friendList.contains(friend)) {
+			friendList.remove(friend);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/** 
