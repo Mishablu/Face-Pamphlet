@@ -129,5 +129,12 @@ public class FacePamphletProfile implements FacePamphletConstants {
 		}
 		return profileName + " (" + profileStatus + "): " + str;
 	}
+	/* 
+	 * String str = profileName + " (" + profileStatus + "):";
+	 * for (String str2: friendList) {
+	 * 	str += " " + str2;
+	 * }
+	 * return str;
+	 */
 	
 }
