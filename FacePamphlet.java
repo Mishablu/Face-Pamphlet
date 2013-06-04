@@ -42,12 +42,14 @@ public class FacePamphlet extends Program
 		add(statusField, WEST);
 		statusField.addActionListener(this);
 		add(new JButton("Change Status"), WEST);
+		
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		pictureField = new JTextField(TEXT_FIELD_SIZE);
 		add(pictureField, WEST);
 		pictureField.addActionListener(this);
 		add(new JButton("Change Picture"), WEST);
+		
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		friendField = new JTextField(TEXT_FIELD_SIZE);
