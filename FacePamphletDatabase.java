@@ -43,8 +43,11 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	 * the given name, the method returns null.
 	 */
 	public FacePamphletProfile getProfile(String name) {
-		// You fill this in.  Currently always returns null.
-		return null;
+		if (profileMap.containsKey(name)) {
+			return profileMap.get(name);
+		} else {
+			return null;
+		}
 	}
 	
 	
@@ -58,17 +61,25 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	 * the database is unchanged after calling this method.
 	 */
 	public void deleteProfile(String name) {
-		// You fill this in
+		if (profileMap.containsKey(name)) {
+			profileMap.remove(name);
+			Iterator<FacePamphletProfile> iterator = profileMap.values().iterator();
+			while (iterator.hasNext()) {
+				iterator.next().removeFriend(name);
+			}
+		}
 	}
-
 	
 	/** 
 	 * This method returns true if there is a profile in the database 
 	 * that has the given name.  It returns false otherwise.
 	 */
 	public boolean containsProfile(String name) {
-		// You fill this in.  Currently always returns false.
-		return false;
+		if (profileMap.containsKey(name)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
