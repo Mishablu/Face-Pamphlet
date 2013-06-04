@@ -15,7 +15,7 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	
 	private String profileName;
 	private GImage profileImage;
-	private String profileStatus = "";
+	private String profileStatus;
 	private ArrayList<String> friendList;
 	
 	
@@ -27,6 +27,9 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 */
 	public FacePamphletProfile(String name) {
 		profileName = name;
+		profileImage = null;
+		profileStatus = "";
+		friendList = new ArrayList<String>();
 	}
 
 	/** This method returns the name associated with the profile. */ 
@@ -101,8 +104,7 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * associated with the profile.
 	 */ 
 	public Iterator<String> getFriends() {
-		Iterator<String> iterator = friendList.iterator();
-		return iterator;
+		return friendList.iterator();
 	}
 	
 	/** 
