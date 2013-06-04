@@ -54,7 +54,6 @@ public class FacePamphlet extends Program
 		add(friendField, WEST);
 		friendField.addActionListener(this);
 		add(new JButton("Add Friend"), WEST);
-		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
     }
     
   
