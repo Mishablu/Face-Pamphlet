@@ -14,8 +14,10 @@ import java.util.*;
 public class FacePamphletProfile implements FacePamphletConstants {
 	
 	private String profileName;
+	private GImage profileImage;
 	private String profileStatus = "";
 	private ArrayList<String> friendList;
+	
 	
 	
 	/** 
@@ -37,13 +39,12 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * If there is no image associated with the profile, the method
 	 * returns null. */ 
 	public GImage getImage() {
-		// You fill this in.  Currently always returns null.
-		return null;
+		return profileImage;
 	}
 
 	/** This method sets the image associated with the profile. */ 
 	public void setImage(GImage image) {
-		// You fill this in
+		profileImage = image;
 	}
 	
 	/** 
