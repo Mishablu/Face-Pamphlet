@@ -13,19 +13,22 @@ import java.util.*;
 
 public class FacePamphletProfile implements FacePamphletConstants {
 	
+	private String profileName;
+	private String profileStatus;
+	
+	
 	/** 
 	 * Constructor
 	 * This method takes care of any initialization needed for
 	 * the profile.
 	 */
 	public FacePamphletProfile(String name) {
-		// You fill this in
+		profileName = name;
 	}
 
 	/** This method returns the name associated with the profile. */ 
 	public String getName() {
-		// You fill this in.  Currently always returns the empty string.
-		return "";
+		return profileName;
 	}
 
 	/** 
@@ -48,13 +51,12 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * returns the empty string ("").
 	 */ 
 	public String getStatus() {
-		// You fill this in.  Currently always returns the empty string.
-		return "";
+		return profileStatus;
 	}
 	
 	/** This method sets the status associated with the profile. */ 
 	public void setStatus(String status) {
-		// You fill this in
+		profileStatus = status;
 	}
 
 	/** 
