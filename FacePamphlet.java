@@ -68,8 +68,7 @@ public class FacePamphlet extends ConsoleProgram
      */
     public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Add")) {
-			String str = nameField.getText();
-			println("Add: " + str);
+			println("Add: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Delete")) {
 			
 		} else if (e.getActionCommand().equals("Lookup")) {
