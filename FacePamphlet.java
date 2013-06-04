@@ -35,17 +35,15 @@ public class FacePamphlet extends ConsoleProgram
     }
 	
 	private void addControllers() {
-		//add the name label to the north indicating that a name should be inserted into the text box
+		//add North controllers
 		add(new JLabel("Name"), NORTH);
-		//add textfield to the north where the user will insert a name
 		nameField = new JTextField(TEXT_FIELD_SIZE);
 		add(nameField, NORTH);
-		//add the add, delete and lookup buttons
 		add(new JButton("Add"), NORTH);
 		add(new JButton("Delete"), NORTH);
 		add(new JButton("Lookup"), NORTH);
 		
-		//add objects to the WEST
+		//add West controllers
 		statusField = new JTextField(TEXT_FIELD_SIZE);
 		add(statusField, WEST);
 		statusField.addActionListener(this);
