@@ -26,7 +26,7 @@ public class FacePamphlet extends Program
 	 */
 	public void init() {
 		
-		//add textfields and buttons to the NORTH
+		//add objects to the NORTH
 		//add the name label to the north indicating that a name should be inserted into the text box
 		add(new JLabel("Name"), NORTH);
 		//add textfield to the north where the user will insert a name
@@ -37,19 +37,22 @@ public class FacePamphlet extends Program
 		add(new JButton("Delete"), NORTH);
 		add(new JButton("Lookup"), NORTH);
 		
-		//add textfields and buttons to the WEST
+		//add objects to the WEST
 		statusField = new JTextField(TEXT_FIELD_SIZE);
 		add(statusField, WEST);
+		statusField.addActionListener(this);
 		add(new JButton("Change Status"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		pictureField = new JTextField(TEXT_FIELD_SIZE);
 		add(pictureField, WEST);
+		pictureField.addActionListener(this);
 		add(new JButton("Change Picture"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		friendField = new JTextField(TEXT_FIELD_SIZE);
 		add(friendField, WEST);
+		friendField.addActionListener(this);
 		add(new JButton("Add Friend"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
     }
