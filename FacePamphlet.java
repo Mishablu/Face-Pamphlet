@@ -69,19 +69,17 @@ public class FacePamphlet extends ConsoleProgram
     public void actionPerformed(ActionEvent e) {
     	//PROBLEM: how to check that the textbox is not empty?
 		if (e.getActionCommand().equals("Add")) {
-			if (nameField.getText() != null) {
-				println("Add: " + nameField.getText());
-			}
+			println("Add: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Delete")) {
 			println("Delete: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Lookup")) {
 			println("Lookup: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Change Status") || e.getSource() == statusField) {
-			
+			println("Change Status: " + statusField.getText());
 		} else if (e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField) {
-			
+			println("Change Picture: " + pictureField.getText());
 		} else if (e.getActionCommand().equals("Add Friend") || e.getSource() == friendField) {
-			
+			println("Add Friend: " + friendField.getText());
 		}
 	}
 
