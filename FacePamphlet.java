@@ -28,7 +28,13 @@ public class FacePamphlet extends ConsoleProgram
 	 */
 	public void init() {
 		
-		//add objects to the NORTH
+		addControllers();
+		
+		
+		addActionListeners();
+    }
+	
+	private void addControllers() {
 		//add the name label to the north indicating that a name should be inserted into the text box
 		add(new JLabel("Name"), NORTH);
 		//add textfield to the north where the user will insert a name
@@ -44,23 +50,17 @@ public class FacePamphlet extends ConsoleProgram
 		add(statusField, WEST);
 		statusField.addActionListener(this);
 		add(new JButton("Change Status"), WEST);
-		
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
-		
 		pictureField = new JTextField(TEXT_FIELD_SIZE);
 		add(pictureField, WEST);
 		pictureField.addActionListener(this);
 		add(new JButton("Change Picture"), WEST);
-		
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
-		
 		friendField = new JTextField(TEXT_FIELD_SIZE);
 		add(friendField, WEST);
 		friendField.addActionListener(this);
 		add(new JButton("Add Friend"), WEST);
-		
-		addActionListeners();
-    }
+	}
     
   
     /**
@@ -70,7 +70,7 @@ public class FacePamphlet extends ConsoleProgram
      */
     public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Add")) {
-			println("Add: " + nameField.getText());
+			nameField.getText();
 		} else if (e.getActionCommand().equals("Delete")) {
 			println("Delete: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Lookup")) {
