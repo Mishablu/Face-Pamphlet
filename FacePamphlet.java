@@ -11,7 +11,7 @@ import acm.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class FacePamphlet extends Program 
+public class FacePamphlet extends ConsoleProgram 
 					implements FacePamphletConstants {
 
 	private JTextField nameField;
@@ -65,7 +65,19 @@ public class FacePamphlet extends Program
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-		// You fill this in as well as add any additional methods
+		if (e.getActionCommand().equals("Add")) {
+			println("Add: " + nameField.getText());
+		} else if (e.getActionCommand().equals("Delete")) {
+			
+		} else if (e.getActionCommand().equals("Lookup")) {
+			
+		} else if (e.getActionCommand().equals("Change Status") || e.getSource() == statusField) {
+			
+		} else if (e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField) {
+			
+		} else if (e.getActionCommand().equals("Add Friend") || e.getSource() == friendField) {
+			
+		}
 	}
 
 }
