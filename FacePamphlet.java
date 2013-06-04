@@ -40,17 +40,17 @@ public class FacePamphlet extends Program
 		//add textfields and buttons to the WEST
 		statusField = new JTextField(TEXT_FIELD_SIZE);
 		add(statusField, WEST);
-		add(new JButton("Change Status"));
+		add(new JButton("Change Status"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		pictureField = new JTextField(TEXT_FIELD_SIZE);
 		add(pictureField, WEST);
-		add(new JButton("Change Picture"));
+		add(new JButton("Change Picture"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
 		
 		friendField = new JTextField(TEXT_FIELD_SIZE);
 		add(friendField, WEST);
-		add(new JButton("Add Friend"));
+		add(new JButton("Add Friend"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
     }
     
