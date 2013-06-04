@@ -56,6 +56,8 @@ public class FacePamphlet extends ConsoleProgram
 		add(friendField, WEST);
 		friendField.addActionListener(this);
 		add(new JButton("Add Friend"), WEST);
+		
+		addActionListeners();
     }
     
   
