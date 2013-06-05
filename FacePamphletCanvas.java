@@ -14,6 +14,7 @@ import java.util.*;
 public class FacePamphletCanvas extends GCanvas 
 					implements FacePamphletConstants {
 	
+	//define the instance variables
 	private GLabel messageLabel;
 	private GLabel nameLabel;
 	private GRect emptyBox;
@@ -28,6 +29,7 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
+		//initialize the instance variables
 		messageLabel = label("", MESSAGE_FONT);
 		nameLabel = label("", PROFILE_NAME_FONT);
 		nameLabel.setColor(Color.BLUE);
@@ -36,7 +38,7 @@ public class FacePamphletCanvas extends GCanvas
 		statusLabel = label("", PROFILE_STATUS_FONT);
 		friendHeader = label("Friends:", PROFILE_FRIEND_LABEL_FONT);
 	}
-
+	// this method creates a label given a string and a font
 	private GLabel label(String str, String font) {
 		GLabel label = new GLabel(str);
 		label.setFont(font);
@@ -74,11 +76,12 @@ public class FacePamphletCanvas extends GCanvas
 		}
 
 	}
+	//this method adds the name label on the canvas
 	private void addName(String name) {
 		nameLabel.setLabel(name);
 		add(nameLabel, LEFT_MARGIN, TOP_MARGIN + nameLabel.getHeight());
 	}
-	
+	//if an image exists for the profiel, the image is added to the canvas. If not, in place of the image is a rectangle and a label saying "no image" 
 	private void addImage(GImage image) {
 		if (image != null) {
 			image.setSize(IMAGE_WIDTH, IMAGE_HEIGHT);
@@ -88,7 +91,7 @@ public class FacePamphletCanvas extends GCanvas
 			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH/2) - noImage.getWidth()/2, emptyBox.getY() + (IMAGE_HEIGHT/2) + noImage.getHeight()/2);
 		}
 	}
-	
+	//this method adds a status if a status is entered. If no status is entered, a message is displayed to that effect
 	private void addStatus(String name, String status) {
 		String string = name + " is " + status;
 		if (status.equals("")) {
@@ -97,11 +100,12 @@ public class FacePamphletCanvas extends GCanvas
 		statusLabel.setLabel(string);
 		add(statusLabel, LEFT_MARGIN, emptyBox.getY() + IMAGE_HEIGHT + STATUS_MARGIN + statusLabel.getHeight());
 	}
-	
+	//this method adds the friends of the profile selected to the canvas by using a while loop that goes through the list of friends of the profile and adds them one at a time on the canvas
 	private void addFriends(Iterator <String> friends){
 		add(friendHeader, getWidth()/2 , emptyBox.getY());
 		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
 		while (friends.hasNext()) {
+			//increase the y value to have all the friend names aligned in a column uniformly dispersed
 			y += friendHeader.getHeight();
 			GLabel friend = new GLabel (friends.next(), getWidth()/2, y);
 			friend.setFont(PROFILE_FRIEND_FONT);

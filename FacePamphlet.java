@@ -130,7 +130,6 @@ public class FacePamphlet extends Program
      * and the canvas is updated. If the database does not contain the profile, the current profile is set to null and the canvas is updated.
      * Either way, a message is displayed accordingly.
      */
-    
     private void lookupProfile(String name) {
     	if (database.containsProfile(name)) {
     		currentProfile = database.getProfile(name);
@@ -154,7 +153,10 @@ public class FacePamphlet extends Program
     		canvas.showMessage("Please select a profile to change status");
     	}
     }
-    
+    /* if a profile is selected, this method updates the profile's picture to the filename entered in the picture textfield and updates the canvas.
+     * if the filename cannot be located or no profile is selected, an appropriate message is displayed
+     * 
+     */
     private void changePicture(String filename) {
     	if (currentProfile != null) {
     		GImage image = null;
@@ -170,7 +172,10 @@ public class FacePamphlet extends Program
     		canvas.showMessage("Please select a profile to change picture");
     	}
     }
-    
+    /* if a profile is selected, the friend we are trying to add is not the profile selected, the database contains a profile by the name of the friend, and the profile does not already have the friend entered as a friend
+     * if all these premises are true, the friend is added, and the current profile is added as a friend to the friend profile, and the canvas is updated.
+     * in all other cases, and appropriate message is displayed on the canvas
+     */
     private void addFriend(String friend) {
     	if (currentProfile != null) {
     		if (!friend.equals(currentProfile.getName())) {
