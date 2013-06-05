@@ -92,7 +92,7 @@ public class FacePamphletCanvas extends GCanvas
 			add(image, LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
 		} else {
 			add(emptyBox);
-			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH/2) - noImage.getWidth()/2, emptyBox.getY() + (IMAGE_HEIGHT/2));
+			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH/2) - noImage.getWidth()/2, emptyBox.getY() + (IMAGE_HEIGHT/2) + noImage.getHeight()/2);
 		}
 	}
 	
