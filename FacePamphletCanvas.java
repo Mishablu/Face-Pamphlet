@@ -28,6 +28,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
+		//point of ref is bottom left you DUMBASSSSS!!
+		
 		messageLabel = new GLabel("");
 		
 		nameLabel = new GLabel("", LEFT_MARGIN, TOP_MARGIN);
