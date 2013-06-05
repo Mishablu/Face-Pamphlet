@@ -165,10 +165,9 @@ public class FacePamphlet extends Program
     			} else {
     				canvas.showMessage(friend + " does not exist");
     			}
-    		} else {
-    			canvas.displayProfile(currentProfile);
-    			canvas.showMessage("Please select a profile to add friend");
-    		}
+    		}	
+    	} else {
+    		canvas.showMessage("Please select a profile to add friend");
     	}
     }
 }
