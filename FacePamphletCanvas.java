@@ -106,8 +106,8 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	
 	private void addFriends(Iterator <String> friends){
-		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
 		add(friendHeader);
+		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
 		while (friends.hasNext()) {
 			y += friendHeader.getHeight();
 			GLabel friend = new GLabel (friends.next(), getWidth()/2, y);
