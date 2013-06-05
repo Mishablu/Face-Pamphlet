@@ -32,6 +32,8 @@ public class FacePamphlet extends ConsoleProgram
 		
 		addControllers();
 		currentProfile = null;
+		canvas = new FacePamphletCanvas();
+		add(canvas);
 		
 		addActionListeners();
     }
@@ -92,27 +94,46 @@ public class FacePamphlet extends ConsoleProgram
     	if (!database.containsProfile(name)) {
     		database.addProfile(profile);
     		currentProfile = profile;
+    		canvas.displayProfile(database.getProfile(name));
+    		canvas.showMessage("A profile with the name " + name + " already exists");
     	} else {
     		currentProfile = database.getProfile(name);
+    		canvas.displayProfile(database.getProfile(name));
+    		canvas.showMessage("New profile created");
     	}
     }
     
     private void deleteProfile(String name) {
-    	database.deleteProfile(name);
     	currentProfile = null;
+    	canvas.displayProfile(currentProfile);
+    	if (database.containsProfile(name)) {
+    		database.deleteProfile(name);
+    		canvas.showMessage("Profile of " + name + " deleted");
+    	} else {
+    		canvas.showMessage("A profile with the name " + name + " does not exist");
+    	}
     }
-    //can add messages to let the user know if name doesn't exist...
+    
     private void lookupProfile(String name) {
-    	//if bug exists its because there's no check to see that the name exists, although that should be fine since the method does that already
+    	if (database.containsProfile(name)) {
     		currentProfile = database.getProfile(name);
+    		canvas.displayProfile(currentProfile);
+    		canvas.showMessage("Displaying " + name);
+    	} else {
+    		println("this profile does not exist");
+    		currentProfile = null;
+    		canvas.displayProfile(currentProfile);
+    		canvas.showMessage("A profile with the name " + name + " does not exist");
+    	}
     }
     
     private void changeStatus(String status) {
     	if (currentProfile != null) {
     		currentProfile.setStatus(status);
-    		println(currentProfile.getName() + "'s status has been updated to " + currentProfile.getStatus());
+    		canvas.displayProfile(currentProfile);
+    		canvas.showMessage("Status updated to " + status);
     	} else {
-    		println("please select a profile to change its status");
+    		canvas.showMessage("Please select a profile to change status");
     	}
     }
     
@@ -122,12 +143,13 @@ public class FacePamphlet extends ConsoleProgram
     		try {
     			image = new GImage(filename);    		
     			currentProfile.setImage(image);
-    			println(currentProfile.getName() + "'s profile picture has been updated");
+    			canvas.displayProfile(currentProfile);
+    			canvas.showMessage("Picture updated");
     		} catch (ErrorException ex) {
-    			// Code that is executed if the filename cannot be opened.
+    			canvas.showMessage("Unable to open the image file " + filename);
     		}
     	} else {
-    		println("please select a profile to change its profile picture");
+    		canvas.showMessage("Please select a profile to change picture");
     	}
     }
     
@@ -136,14 +158,16 @@ public class FacePamphlet extends ConsoleProgram
     		if (database.containsProfile(friend)) {
     			if (currentProfile.addFriend(friend)) {
     				database.getProfile(friend).addFriend(currentProfile.getName());
+    				canvas.displayProfile(currentProfile);
+    				canvas.showMessage(friend + " added as a friend");
     			} else {
-    				println(currentProfile.getName() + "is already friends with" + friend);
+    				canvas.showMessage(currentProfile.getName() + " already has " + friend + " as a friend");
     			}
     		} else {
-    			println("this profile does not exist");
+    			canvas.showMessage(friend + " does not exist");
     		}
     	} else {
-    		println("please select a profile to add a friend");
+    		canvas.showMessage("Please select a profile to add friend");
     	}
     }
 }
