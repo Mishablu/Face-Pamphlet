@@ -142,8 +142,8 @@ public class FacePamphlet extends Program
     		canvas.showMessage("A profile with the name " + name + " does not exist");
     	}
     }
-    /* if a profile is selected, this method
-     * 
+    /* if a profile is selected, this method updates the profile's status to what has been entered in the text field and updates the canvas accordingly.
+     * if no profile is selected, a message to that effect is displayed.
      */
     private void changeStatus(String status) {
     	if (currentProfile != null) {
