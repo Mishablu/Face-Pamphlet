@@ -71,7 +71,7 @@ public class FacePamphlet extends Program
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Add") && !nameField.getText().equals("")) {
+		if (e.getActionCommand().equals("Add")) {
 			addProfile(nameField.getText());
 		} else if (e.getActionCommand().equals("Delete") && !nameField.getText().equals("")) {
 			deleteProfile(nameField.getText());
