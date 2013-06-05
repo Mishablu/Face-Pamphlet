@@ -14,7 +14,13 @@ import java.util.*;
 public class FacePamphletCanvas extends GCanvas 
 					implements FacePamphletConstants {
 	
-	private GLabel label;
+	private GLabel messageLabel;
+	private GLabel nameLabel;
+	private GLabel statusLabel;
+	private GRect emptyBox;
+	private GLabel noImage;
+	private GLabel friendHeader;
+	
 	
 	/** 
 	 * Constructor
@@ -22,7 +28,23 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		label = null;
+		messageLabel = null;
+		
+		nameLabel = new GLabel("", LEFT_MARGIN, TOP_MARGIN);
+		nameLabel.setColor(Color.BLUE);
+		nameLabel.setFont(PROFILE_NAME_FONT);
+		
+		statusLabel = new GLabel("", LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN + STATUS_MARGIN));
+		
+		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
+		
+		noImage = new GLabel("No Image", IMAGE_WIDTH/2, IMAGE_HEIGHT/2);
+		noImage.setFont(PROFILE_IMAGE_FONT);
+		noImage.move(-noImage.getWidth()/2, -noImage.getHeight()/2);
+		
+		friendHeader = new GLabel ("Friends:" , getWidth()/2 , (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
+		friendHeader.setFont(PROFILE_FRIEND_LABEL_FONT);
+		friendHeader.move(0, -friendHeader.getHeight());
 	}
 
 	
@@ -33,11 +55,11 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		remove(label);
-		label = new GLabel(msg, 0, getHeight()-BOTTOM_MESSAGE_MARGIN);
-		label.setFont(MESSAGE_FONT);
-		label.move((getWidth()/2)-(label.getWidth()/2), -label.getHeight());
-		add(label);
+		remove(messageLabel);
+		messageLabel = new GLabel(msg, 0, getHeight()-BOTTOM_MESSAGE_MARGIN);
+		messageLabel.setFont(MESSAGE_FONT);
+		messageLabel.move((getWidth()/2)-(messageLabel.getWidth()/2), -messageLabel.getHeight());
+		add(messageLabel);
 	}
 	
 	
@@ -51,15 +73,44 @@ public class FacePamphletCanvas extends GCanvas
 	 * the user, and a list of the user's friends in the social network.
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
-		//remove all at the start, see how to do so without having to initialize
-		
-		GLabel name = new GLabel(profile.getName(), LEFT_MARGIN, TOP_MARGIN);
-		name.setColor(Color.BLUE);
-		name.setFont(PROFILE_NAME_FONT);
-		add(name);
-		
+		removeAll();
+		addName(profile.getName());
+		addImage(profile.getImage());
+		addStatus(profile.getName(), profile.getStatus());
+		addFriends(profile.getFriends());
+	}
+	private void addName(String name) {
+		nameLabel.setLabel(name);
+		add(nameLabel);
+	}
+	
+	private void addImage(GImage image) {
+		if (image != null) {
+			image.setSize(IMAGE_WIDTH, IMAGE_HEIGHT);
+			add(image, LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
+		} else {
+			add(emptyBox);
+			add(noImage);
+		}
+	}
+	
+	private void addStatus(String name, String status) {
+		String string = name + " is " + status;
+		if (status.equals("")) {
+			string = "No current status";
+		}
+		statusLabel.setLabel(string);
+		add(statusLabel);
+	}
+	
+	private void addFriends(Iterator <String> friends){
+		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
+		while (friends.hasNext()) {
+			y += friendHeader.getHeight();
+			GLabel friend = new GLabel (friends.next(), getWidth()/2, y);
+			friend.setFont(PROFILE_FRIEND_FONT);
+			add(friend);
+		}
 		
 	}
-
-	
 }
