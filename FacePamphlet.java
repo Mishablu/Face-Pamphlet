@@ -70,7 +70,7 @@ public class FacePamphlet extends ConsoleProgram
      */
     public void actionPerformed(ActionEvent e) {
     	//add check for empty textfield
-		if (e.getActionCommand().equals("Add") && nameField.getText() != "") {
+		if (e.getActionCommand().equals("Add") && !nameField.getText().equals("")) {
 			//addProfile(nameField.getText());
 			println("Add: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Delete")) {
