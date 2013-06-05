@@ -29,12 +29,11 @@ public class FacePamphlet extends Program
 	 * initialization that needs to be performed.
 	 */
 	public void init() {
-		
 		addControllers();
 		currentProfile = null;
+		database = new FacePamphletDatabase();
 		canvas = new FacePamphletCanvas();
 		add(canvas);
-		
 		addActionListeners();
     }
 	
