@@ -19,7 +19,9 @@ public class FacePamphlet extends ConsoleProgram
 	private JTextField pictureField;
 	private JTextField friendField;
 	
+	private FacePamphletProfile currentProfile;
 	private FacePamphletDatabase database;
+	private FacePamphletCanvas canvas;
 	
 	/**
 	 * This method has the responsibility for initializing the 
@@ -29,7 +31,7 @@ public class FacePamphlet extends ConsoleProgram
 	public void init() {
 		
 		addControllers();
-		
+		currentProfile = null;
 		
 		addActionListeners();
     }
@@ -67,12 +69,14 @@ public class FacePamphlet extends ConsoleProgram
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Add")) {
-			nameField.getText();
+    	//add check for empty textfield
+		if (e.getActionCommand().equals("Add") && nameField.getText() != "") {
+			//addProfile(nameField.getText());
+			println("Add: " + nameField.getText());
 		} else if (e.getActionCommand().equals("Delete")) {
-			println("Delete: " + nameField.getText());
+			deleteProfile(nameField.getText());
 		} else if (e.getActionCommand().equals("Lookup")) {
-			println("Lookup: " + nameField.getText());
+			lookupProfile(nameField.getText());
 		} else if (e.getActionCommand().equals("Change Status") || e.getSource() == statusField) {
 			println("Change Status: " + statusField.getText());
 		} else if (e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField) {
@@ -81,5 +85,29 @@ public class FacePamphlet extends ConsoleProgram
 			println("Add Friend: " + friendField.getText());
 		}
 	}
-
+    
+    private void addProfile(String name) {
+    	FacePamphletProfile profile = new FacePamphletProfile(name);
+    	if (!database.containsProfile(name)) {
+    		database.addProfile(profile);
+    		currentProfile = profile;
+    	} else {
+    		currentProfile = database.getProfile(name);
+    	}
+    }
+    
+    private void deleteProfile(String name) {
+    	database.deleteProfile(name);
+    	currentProfile = null;
+    }
+    
+    private void lookupProfile(String name) {
+    	//delete this test in database
+    	if (database.containsProfile(name)) {
+    		currentProfile = database.getProfile(name);
+    	} else {
+    		currentProfile = null;
+    	}
+    	
+    }
 }
