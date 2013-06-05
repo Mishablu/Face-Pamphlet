@@ -71,7 +71,7 @@ public class FacePamphlet extends Program
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Add")) {
+		if (e.getActionCommand().equals("Add") && !nameField.getText().equals("")) {
 			addProfile(nameField.getText());
 		} else if (e.getActionCommand().equals("Delete") && !nameField.getText().equals("")) {
 			deleteProfile(nameField.getText());
@@ -94,13 +94,12 @@ public class FacePamphlet extends Program
     	if (database.containsProfile(name)) {
     		currentProfile = database.getProfile(name);
     		canvas.displayProfile(database.getProfile(name));
-    		canvas.showMessage("New profile created");
-    		
+    		canvas.showMessage("A profile with the name " + name + " already exists");
     	} else {
     		database.addProfile(profile);
     		currentProfile = profile;
-    		canvas.displayProfile(database.getProfile(name));
-    		canvas.showMessage("A profile with the name " + name + " already exists");
+    		canvas.displayProfile(currentProfile);
+    		canvas.showMessage("New profile created");
     	}
     }
     
