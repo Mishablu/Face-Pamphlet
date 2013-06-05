@@ -43,6 +43,7 @@ public class FacePamphletCanvas extends GCanvas
 		
 		statusLabel = new GLabel("", LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN));
 		statusLabel.setFont(PROFILE_STATUS_FONT);
+		statusLabel.move(0, statusLabel.getHeight());
 		
 		friendHeader = new GLabel ("Friends:");
 		friendHeader.setFont(PROFILE_FRIEND_LABEL_FONT);
