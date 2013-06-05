@@ -28,29 +28,27 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		//point of ref is bottom left you DUMBASSSSS!! change that shit now...
-		
-		messageLabel = new GLabel("");
-		
-		nameLabel = new GLabel("");
-		nameLabel.setColor(Color.BLUE);
-		nameLabel.setFont(PROFILE_NAME_FONT);
 
+		
+		messageLabel = label("", MESSAGE_FONT);
+		
+		nameLabel = label("", PROFILE_NAME_FONT);
+		nameLabel.setColor(Color.BLUE);
 		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
 		
-		noImage = new GLabel("No Image", LEFT_MARGIN+(IMAGE_WIDTH/2), (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN)+(IMAGE_HEIGHT/2));
-		noImage.setFont(PROFILE_IMAGE_FONT);
-		noImage.move(-noImage.getWidth()/2, noImage.getHeight()/2);
+		noImage = label("No Image", PROFILE_IMAGE_FONT);
 		
-		statusLabel = new GLabel("", LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN));
-		statusLabel.setFont(PROFILE_STATUS_FONT);
-		statusLabel.move(0, statusLabel.getHeight());
+		statusLabel = label("", PROFILE_STATUS_FONT);
 		
-		friendHeader = new GLabel ("Friends:");
-		friendHeader.setFont(PROFILE_FRIEND_LABEL_FONT);
+		friendHeader = label("Friends:", PROFILE_FRIEND_LABEL_FONT);
 	}
 
+	private GLabel label(String str, String font) {
+		GLabel label = new GLabel(str);
+		label.setFont(font);
+		return label;
+	}
 	
 	/** 
 	 * This method displays a message string near the bottom of the 
@@ -60,7 +58,6 @@ public class FacePamphletCanvas extends GCanvas
 	 */
 	public void showMessage(String msg) {
 		messageLabel.setLabel(msg);
-		messageLabel.setFont(MESSAGE_FONT);
 		add(messageLabel, getWidth()/2-(messageLabel.getWidth()/2), getHeight()-BOTTOM_MESSAGE_MARGIN);
 	}
 	
@@ -95,7 +92,7 @@ public class FacePamphletCanvas extends GCanvas
 			add(image, LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
 		} else {
 			add(emptyBox);
-			add(noImage);
+			add(noImage, LEFT_MARGIN + (IMAGE_WIDTH/2) - noImage.getWidth()/2, emptyBox.getX() + (IMAGE_HEIGHT/2) + noImage.getHeight()/2);
 		}
 	}
 	
@@ -105,7 +102,7 @@ public class FacePamphletCanvas extends GCanvas
 			string = "No current status";
 		}
 		statusLabel.setLabel(string);
-		add(statusLabel);
+		add(statusLabel, LEFT_MARGIN, emptyBox.getY() + IMAGE_HEIGHT + STATUS_MARGIN + statusLabel.getHeight());
 	}
 	
 	private void addFriends(Iterator <String> friends){
