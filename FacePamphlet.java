@@ -13,12 +13,16 @@ import javax.swing.*;
 
 public class FacePamphlet extends Program 
 					implements FacePamphletConstants {
-
+	
+	//define the instance variables
+	//this variable is the text field that will hold the name entered at the north of the program
 	private JTextField nameField;
+	//the following three variables are the text fields that will respectively hold the status change, picture change and added friend
 	private JTextField statusField;
 	private JTextField pictureField;
 	private JTextField friendField;
 	
+	//define instance variables that initialize the other classes
 	private FacePamphletProfile currentProfile;
 	private FacePamphletDatabase database;
 	private FacePamphletCanvas canvas;
@@ -29,14 +33,18 @@ public class FacePamphlet extends Program
 	 * initialization that needs to be performed.
 	 */
 	public void init() {
+		//add controllers to the program
 		addControllers();
+		//initialize the instance variable that holds the current profile to null
 		currentProfile = null;
+		//initialize the variables that call on the other classes (database and canvas)
 		database = new FacePamphletDatabase();
 		canvas = new FacePamphletCanvas();
 		add(canvas);
 		addActionListeners();
     }
 	
+	//this method adds the controllers to the north and to the west of the program. When adding text fields, it adds action listeners if appropriate
 	private void addControllers() {
 		//add North controllers
 		add(new JLabel("Name"), NORTH);
@@ -49,6 +57,7 @@ public class FacePamphlet extends Program
 		//add West controllers
 		statusField = new JTextField(TEXT_FIELD_SIZE);
 		add(statusField, WEST);
+		//add action listeners to enable text field when the user presses enter
 		statusField.addActionListener(this);
 		add(new JButton("Change Status"), WEST);
 		add(new JLabel(EMPTY_LABEL_TEXT), WEST);
@@ -87,18 +96,17 @@ public class FacePamphlet extends Program
 			addFriend(friendField.getText());
 		}
 	}
-    
+    //this method adds the profile entered in the name textfield if it doesn't already exist, and selects the profile entered if it already exists in the database
     private void addProfile(String name) {
-    	FacePamphletProfile profile = new FacePamphletProfile(name);
-    	if (database.containsProfile(name)) {
+    	if (!database.containsProfile(name)) {
+    		database.addProfile(database.getProfile(name));
+    		currentProfile = database.getProfile(name);
+    		canvas.displayProfile(currentProfile);
+    		canvas.showMessage("New profile created");
+    	} else {
     		currentProfile = database.getProfile(name);
     		canvas.displayProfile(database.getProfile(name));
     		canvas.showMessage("A profile with the name " + name + " already exists");
-    	} else {
-    		database.addProfile(profile);
-    		currentProfile = profile;
-    		canvas.displayProfile(currentProfile);
-    		canvas.showMessage("New profile created");
     	}
     }
     
