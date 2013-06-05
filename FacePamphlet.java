@@ -119,7 +119,6 @@ public class FacePamphlet extends Program
     		canvas.displayProfile(currentProfile);
     		canvas.showMessage("Displaying " + name);
     	} else {
-    		println("this profile does not exist");
     		currentProfile = null;
     		canvas.displayProfile(currentProfile);
     		canvas.showMessage("A profile with the name " + name + " does not exist");
