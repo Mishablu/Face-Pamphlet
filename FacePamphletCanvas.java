@@ -60,6 +60,7 @@ public class FacePamphletCanvas extends GCanvas
 		messageLabel.setLabel(msg);
 		messageLabel.setFont(MESSAGE_FONT);
 		add(messageLabel, getWidth()/2-(messageLabel.getWidth()/2), getHeight()-BOTTOM_MESSAGE_MARGIN);
+		GLabel test = new GLabel ("test", 0, 0);
 	}
 	
 	
