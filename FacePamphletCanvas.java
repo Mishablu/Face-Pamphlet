@@ -107,7 +107,7 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	
 	private void addFriends(Iterator <String> friends){
-		add(friendHeader, getWidth()/2 , emptyBox.getY() - friendHeader.getHeight());
+		add(friendHeader, getWidth()/2 , emptyBox.getY());
 		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
 		while (friends.hasNext()) {
 			y += friendHeader.getHeight();
