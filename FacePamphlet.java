@@ -96,11 +96,15 @@ public class FacePamphlet extends Program
 			addFriend(friendField.getText());
 		}
 	}
-    //this method adds the profile entered in the name textfield if it doesn't already exist, and selects the profile entered if it already exists in the database
+    /* If the profile entered in the name textfield does not exist in the database, this method adds the profile to the database, updated the current profile variable, and updates the canvas
+     * If the profile does exist in the database, this method sets the current profile to the existing profile by the name entered, and updates the canvas accordingly
+     */
     private void addProfile(String name) {
     	if (!database.containsProfile(name)) {
-    		database.addProfile(database.getProfile(name));
-    		currentProfile = database.getProfile(name);
+    		//create the new profile in the facepamphletprofile class and save it to the variable profile
+    		FacePamphletProfile profile = new FacePamphletProfile(name);
+    		database.addProfile(profile);
+    		currentProfile = profile;
     		canvas.displayProfile(currentProfile);
     		canvas.showMessage("New profile created");
     	} else {
@@ -109,7 +113,9 @@ public class FacePamphlet extends Program
     		canvas.showMessage("A profile with the name " + name + " already exists");
     	}
     }
-    
+    /* this method deletes the profile entered in the textfield. It sets the current profile to null if the profile inputed exists or not. 
+     * It displays an appropriate message on the canvas depending on whether the profile entered exists in the database or not
+     */
     private void deleteProfile(String name) {
     	currentProfile = null;
     	canvas.displayProfile(currentProfile);
@@ -120,6 +126,10 @@ public class FacePamphlet extends Program
     		canvas.showMessage("A profile with the name " + name + " does not exist");
     	}
     }
+    /* this method looks up the profile by the name entered in the textfield. if the database contains the profile, the current profile is changed to the profile entered
+     * and the canvas is updated. If the database does not contain the profile, the current profile is set to null and the canvas is updated.
+     * Either way, a message is displayed accordingly.
+     */
     
     private void lookupProfile(String name) {
     	if (database.containsProfile(name)) {
@@ -132,7 +142,9 @@ public class FacePamphlet extends Program
     		canvas.showMessage("A profile with the name " + name + " does not exist");
     	}
     }
-    
+    /* if a profile is selected, this method
+     * 
+     */
     private void changeStatus(String status) {
     	if (currentProfile != null) {
     		currentProfile.setStatus(status);
