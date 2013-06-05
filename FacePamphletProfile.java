@@ -120,21 +120,13 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 */ 
 	public String toString() {
 		String str = "";
-		Iterator<String> iterator = friendList.iterator();
-		while (iterator.hasNext()) {
+		for (String str2: friendList) {
 			if (str != "") {
 				str += ", ";
 			}
-			str += iterator.next();
+			str += str2;
 		}
 		return profileName + " (" + profileStatus + "): " + str;
 	}
-	/* 
-	 * String str = profileName + " (" + profileStatus + "):";
-	 * for (String str2: friendList) {
-	 * 	str += " " + str2;
-	 * }
-	 * return str;
-	 */
 	
 }
