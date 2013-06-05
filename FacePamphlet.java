@@ -71,17 +71,19 @@ public class FacePamphlet extends ConsoleProgram
     public void actionPerformed(ActionEvent e) {
     	//add check for empty textfield
 		if (e.getActionCommand().equals("Add") && !nameField.getText().equals("")) {
-			//addProfile(nameField.getText());
-			println("Add: " + nameField.getText());
-		} else if (e.getActionCommand().equals("Delete")) {
+			addProfile(nameField.getText());
+		} else if (e.getActionCommand().equals("Delete") && !nameField.getText().equals("")) {
 			deleteProfile(nameField.getText());
-		} else if (e.getActionCommand().equals("Lookup")) {
+		} else if (e.getActionCommand().equals("Lookup") && !nameField.getText().equals("")) {
 			lookupProfile(nameField.getText());
-		} else if (e.getActionCommand().equals("Change Status") || e.getSource() == statusField) {
+		} else if ((e.getActionCommand().equals("Change Status") || e.getSource() == statusField) 
+				&& !statusField.getText().equals("")) {
 			println("Change Status: " + statusField.getText());
-		} else if (e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField) {
+		} else if ((e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField)
+				&& !pictureField.getText().equals("")) {
 			println("Change Picture: " + pictureField.getText());
-		} else if (e.getActionCommand().equals("Add Friend") || e.getSource() == friendField) {
+		} else if ((e.getActionCommand().equals("Add Friend") || e.getSource() == friendField)
+				&& !friendField.getText().equals("")) {
 			println("Add Friend: " + friendField.getText());
 		}
 	}
