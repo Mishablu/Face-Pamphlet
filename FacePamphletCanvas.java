@@ -28,19 +28,12 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-
-		
 		messageLabel = label("", MESSAGE_FONT);
-		
 		nameLabel = label("", PROFILE_NAME_FONT);
 		nameLabel.setColor(Color.BLUE);
-		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
-		
 		noImage = label("No Image", PROFILE_IMAGE_FONT);
-		
 		statusLabel = label("", PROFILE_STATUS_FONT);
-		
 		friendHeader = label("Friends:", PROFILE_FRIEND_LABEL_FONT);
 	}
 
