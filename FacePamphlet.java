@@ -154,19 +154,21 @@ public class FacePamphlet extends Program
     
     private void addFriend(String friend) {
     	if (currentProfile != null) {
-    		if (database.containsProfile(friend)) {
-    			if (currentProfile.addFriend(friend)) {
-    				database.getProfile(friend).addFriend(currentProfile.getName());
-    				canvas.displayProfile(currentProfile);
-    				canvas.showMessage(friend + " added as a friend");
+    		if (!friend.equals(currentProfile.getName())) {
+    			if (database.containsProfile(friend)) {
+    				if (currentProfile.addFriend(friend)) {
+    					database.getProfile(friend).addFriend(currentProfile.getName());
+    					canvas.displayProfile(currentProfile);
+    					canvas.showMessage(friend + " added as a friend");
+    				} else {
+    					canvas.showMessage(currentProfile.getName() + " already has " + friend + " as a friend");
+    				}
     			} else {
-    				canvas.showMessage(currentProfile.getName() + " already has " + friend + " as a friend");
+    				canvas.showMessage(friend + " does not exist");
     			}
     		} else {
-    			canvas.showMessage(friend + " does not exist");
+    			canvas.showMessage("Please select a profile to add friend");
     		}
-    	} else {
-    		canvas.showMessage("Please select a profile to add friend");
     	}
     }
 }
