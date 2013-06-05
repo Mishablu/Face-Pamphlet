@@ -58,7 +58,7 @@ public class FacePamphletCanvas extends GCanvas
 	public void showMessage(String msg) {
 		messageLabel.setLabel(msg);
 		messageLabel.setFont(MESSAGE_FONT);
-		add(messageLabel,getWidth()/2-(messageLabel.getWidth()/2), getHeight()-BOTTOM_MESSAGE_MARGIN);
+		add(messageLabel, getWidth()/2-(messageLabel.getWidth()/2), getHeight()-BOTTOM_MESSAGE_MARGIN);
 	}
 	
 	
@@ -107,6 +107,7 @@ public class FacePamphletCanvas extends GCanvas
 	
 	private void addFriends(Iterator <String> friends){
 		double y = (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN);
+		add(friendHeader);
 		while (friends.hasNext()) {
 			y += friendHeader.getHeight();
 			GLabel friend = new GLabel (friends.next(), getWidth()/2, y);
