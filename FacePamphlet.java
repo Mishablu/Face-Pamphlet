@@ -91,15 +91,16 @@ public class FacePamphlet extends ConsoleProgram
     
     private void addProfile(String name) {
     	FacePamphletProfile profile = new FacePamphletProfile(name);
-    	if (!database.containsProfile(name)) {
+    	if (database.containsProfile(name)) {
+    		currentProfile = database.getProfile(name);
+    		canvas.displayProfile(database.getProfile(name));
+    		canvas.showMessage("New profile created");
+    		
+    	} else {
     		database.addProfile(profile);
     		currentProfile = profile;
     		canvas.displayProfile(database.getProfile(name));
     		canvas.showMessage("A profile with the name " + name + " already exists");
-    	} else {
-    		currentProfile = database.getProfile(name);
-    		canvas.displayProfile(database.getProfile(name));
-    		canvas.showMessage("New profile created");
     	}
     }
     
