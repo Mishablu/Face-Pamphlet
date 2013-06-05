@@ -33,6 +33,7 @@ public class FacePamphletCanvas extends GCanvas
 		nameLabel = new GLabel("", LEFT_MARGIN, TOP_MARGIN);
 		nameLabel.setColor(Color.BLUE);
 		nameLabel.setFont(PROFILE_NAME_FONT);
+		nameLabel.move(0, nameLabel.getHeight());
 		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
 		
