@@ -18,8 +18,6 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	private String profileStatus;
 	private ArrayList<String> friendList;
 	
-	
-	
 	/** 
 	 * Constructor
 	 * This method takes care of any initialization needed for
