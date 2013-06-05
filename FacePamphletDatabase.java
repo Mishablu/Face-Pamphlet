@@ -29,11 +29,7 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	 * the new profile passed in.
 	 */
 	public void addProfile(FacePamphletProfile profile) {
-		String name = profile.getName();
-		if (profileMap.containsKey(name)) {
-			profileMap.remove(name);
-		}
-		profileMap.put(name, profile);
+		profileMap.put(profile.getName(), profile);
 	}
 
 	
