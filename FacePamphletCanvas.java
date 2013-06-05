@@ -28,14 +28,14 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		//point of ref is bottom left you DUMBASSSSS!!
+		//point of ref is bottom left you DUMBASSSSS!! change that shit now...
 		
 		messageLabel = new GLabel("");
 		
-		nameLabel = new GLabel("", LEFT_MARGIN, TOP_MARGIN);
+		nameLabel = new GLabel("");
 		nameLabel.setColor(Color.BLUE);
 		nameLabel.setFont(PROFILE_NAME_FONT);
-		nameLabel.move(0, nameLabel.getHeight());
+
 		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
 		
@@ -86,7 +86,7 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	private void addName(String name) {
 		nameLabel.setLabel(name);
-		add(nameLabel);
+		add(nameLabel, LEFT_MARGIN, TOP_MARGIN + nameLabel.getHeight());
 	}
 	
 	private void addImage(GImage image) {
