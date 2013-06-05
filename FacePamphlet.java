@@ -69,7 +69,6 @@ public class FacePamphlet extends ConsoleProgram
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
-    	//add check for empty textfield
 		if (e.getActionCommand().equals("Add") && !nameField.getText().equals("")) {
 			addProfile(nameField.getText());
 		} else if (e.getActionCommand().equals("Delete") && !nameField.getText().equals("")) {
@@ -78,13 +77,13 @@ public class FacePamphlet extends ConsoleProgram
 			lookupProfile(nameField.getText());
 		} else if ((e.getActionCommand().equals("Change Status") || e.getSource() == statusField) 
 				&& !statusField.getText().equals("")) {
-			println("Change Status: " + statusField.getText());
+			changeStatus(statusField.getText());
 		} else if ((e.getActionCommand().equals("Change Picture") || e.getSource() == pictureField)
 				&& !pictureField.getText().equals("")) {
-			println("Change Picture: " + pictureField.getText());
+			changePicture(pictureField.getText());
 		} else if ((e.getActionCommand().equals("Add Friend") || e.getSource() == friendField)
 				&& !friendField.getText().equals("")) {
-			println("Add Friend: " + friendField.getText());
+			addFriend(friendField.getText());
 		}
 	}
     
@@ -104,12 +103,47 @@ public class FacePamphlet extends ConsoleProgram
     }
     
     private void lookupProfile(String name) {
-    	//delete this test in database
-    	if (database.containsProfile(name)) {
+    	//if bug exists its because there's no check to see that the name exists, although that should be fine since the method does that already
     		currentProfile = database.getProfile(name);
+    }
+    
+    private void changeStatus(String status) {
+    	if (currentProfile != null) {
+    		currentProfile.setStatus(status);
+    		println(currentProfile.getName() + "'s status has been updated to " + currentProfile.getStatus());
     	} else {
-    		currentProfile = null;
+    		println("please select a profile to change its status");
     	}
-    	
+    }
+    
+    private void changePicture(String filename) {
+    	if (currentProfile != null) {
+    		GImage image = null;
+    		try {
+    			image = new GImage(filename);    		
+    			currentProfile.setImage(image);
+    			println(currentProfile.getName() + "'s profile picture has been updated");
+    		} catch (ErrorException ex) {
+    			// Code that is executed if the filename cannot be opened.
+    		}
+    	} else {
+    		println("please select a profile to change its profile picture");
+    	}
+    }
+    
+    private void addFriend(String friend) {
+    	if (currentProfile != null) {
+    		if (database.containsProfile(friend)) {
+    			if (currentProfile.addFriend(friend)) {
+    				database.getProfile(friend).addFriend(currentProfile.getName());
+    			} else {
+    				println(currentProfile.getName() + "is already friends with" + friend);
+    			}
+    		} else {
+    			println("this profile does not exist");
+    		}
+    	} else {
+    		println("please select a profile to add a friend");
+    	}
     }
 }
