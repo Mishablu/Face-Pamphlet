@@ -101,7 +101,7 @@ public class FacePamphlet extends ConsoleProgram
     	database.deleteProfile(name);
     	currentProfile = null;
     }
-    
+    //can add messages to let the user know if name doesn't exist...
     private void lookupProfile(String name) {
     	//if bug exists its because there's no check to see that the name exists, although that should be fine since the method does that already
     		currentProfile = database.getProfile(name);
