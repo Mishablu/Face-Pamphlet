@@ -39,9 +39,9 @@ public class FacePamphletCanvas extends GCanvas
 		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
 		
-		noImage = new GLabel("No Image", LEFT_MARGIN+(IMAGE_WIDTH/2), (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN)+(IMAGE_HEIGHT));
+		noImage = new GLabel("No Image", LEFT_MARGIN+(IMAGE_WIDTH/2), (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN)+(IMAGE_HEIGHT/2));
 		noImage.setFont(PROFILE_IMAGE_FONT);
-		noImage.move(-noImage.getWidth()/2, 0);
+		noImage.move(-noImage.getWidth()/2, -noImage.getHeight()/2);
 		
 		friendHeader = new GLabel ("Friends:" , getWidth()/2 , (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
 		friendHeader.setFont(PROFILE_FRIEND_LABEL_FONT);
