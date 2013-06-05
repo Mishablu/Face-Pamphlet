@@ -75,10 +75,13 @@ public class FacePamphletCanvas extends GCanvas
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
 		removeAll();
-		addName(profile.getName());
-		addImage(profile.getImage());
-		addStatus(profile.getName(), profile.getStatus());
-		addFriends(profile.getFriends());
+		if (profile != null) {
+			addName(profile.getName());
+			addImage(profile.getImage());
+			addStatus(profile.getName(), profile.getStatus());
+			addFriends(profile.getFriends());
+		}
+
 	}
 	private void addName(String name) {
 		nameLabel.setLabel(name);
