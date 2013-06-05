@@ -16,9 +16,9 @@ public class FacePamphletCanvas extends GCanvas
 	
 	private GLabel messageLabel;
 	private GLabel nameLabel;
-	private GLabel statusLabel;
 	private GRect emptyBox;
-	private GLabel noImage;
+	private GLabel noImage;	
+	private GLabel statusLabel;
 	private GLabel friendHeader;
 	
 	
@@ -35,13 +35,13 @@ public class FacePamphletCanvas extends GCanvas
 		nameLabel.setColor(Color.BLUE);
 		nameLabel.setFont(PROFILE_NAME_FONT);
 		
-		statusLabel = new GLabel("", LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN + STATUS_MARGIN));
-		
 		emptyBox = new GRect(LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN), IMAGE_WIDTH, IMAGE_HEIGHT);
 		
 		noImage = new GLabel("No Image", LEFT_MARGIN+(IMAGE_WIDTH/2), (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN)+(IMAGE_HEIGHT/2));
 		noImage.setFont(PROFILE_IMAGE_FONT);
 		noImage.move(-noImage.getWidth()/2, noImage.getHeight()/2);
+		
+		statusLabel = new GLabel("", LEFT_MARGIN, (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN + IMAGE_HEIGHT + STATUS_MARGIN));
 		
 		friendHeader = new GLabel ("Friends:" , getWidth()/2 , (TOP_MARGIN + nameLabel.getHeight() + IMAGE_MARGIN));
 		friendHeader.setFont(PROFILE_FRIEND_LABEL_FONT);
