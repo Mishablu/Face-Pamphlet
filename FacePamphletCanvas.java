@@ -21,7 +21,6 @@ public class FacePamphletCanvas extends GCanvas
 	private GLabel noImage;	
 	private GLabel statusLabel;
 	private GLabel friendHeader;
-	//heys
 	
 	
 	/** 
